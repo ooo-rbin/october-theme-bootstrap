@@ -1,0 +1,24 @@
+name: 'Главное меню - слева'
+items:
+    -
+        title: 'Все страницы'
+        nesting: ''
+        type: all-static-pages
+        url: ''
+        code: ''
+        reference: ''
+        cmsPage: ''
+        replace: '1'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Блог'
+        type: url
+        url: /blog
+        code: blog
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
