@@ -1,5 +1,5 @@
 @charset "UTF-8";
 
-$icon-font-path: 'vendor.fonts/';
+@import 'vars.scss';
 
-@import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../vendor.components/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
