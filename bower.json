@@ -2,6 +2,6 @@
 	"name": "bootstrap",
 	"dependencies": {
 		"jquery": "^2.2.0",
-		"bootstrap-sass": "^3.3.6"
+		"bootstrap": "^3.3.6"
 	}
 }
