@@ -3,6 +3,7 @@
 	"dependencies": {
 		"es6-promise": "^3.0.2",
 		"gulp": "^3.8.8",
+		"less": "^2.6.0",
 		"bower": "^1.7.2",
 		"gulp-bower": "^0.0.13",
 		"gulp-less": "^3.0.5",
@@ -14,6 +15,10 @@
 		"gulp-rename": "^1.2.2"
 	},
 	"scripts": {
-		"postinstall": "./node_modules/.bin/gulp"
+		"postinstall": "node ./node_modules/.bin/gulp default",
+		"gulp": "node ./node_modules/.bin/gulp",
+		"watch": "node ./node_modules/.bin/gulp default:watch",
+		"less": "node ./node_modules/.bin/less",
+		"bower": "node ./node_modules/.bin/bower"
 	}
 }

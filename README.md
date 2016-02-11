@@ -1,8 +1,10 @@
 # October Bootstrap
 
-Данная тема построена на фреймворке Bootstrap.
-Она предназначена для CMS October.
+Данная тема построена на фреймворке [Bootstrap](http://getbootstrap.com/).
+Она предназначена для [CMS October](https://octobercms.com/) и поддерживает плагины [RainLab.Blog](https://octobercms.com/plugin/rainlab-blog) и [RainLab.Pages](https://octobercms.com/plugin/rainlab-pages).
+В теме присутствуют примеры шаблонов для этих плагинов взятые из [видео-курсa Дмитрия Афанасьева](http://simple-training.com/category/october-cms-static-pages/).
 
+Для сборки необходимо наличие пакета программ [Node.JS](https://nodejs.org/).
 Сборка темы осуществляется командой `npm install`.
 Артифактами сборки являются:
 
@@ -15,7 +17,12 @@
 	2. `functions.php` - PHP функции шаблона.
 	3. `config.ini` - параметры шаблона.
 
-Модификации темы отслеживаются командой `gulp default:watch`.
+Модификации темы отслеживаются командой `npm watch`.
+Так же, тема использует скрипты:
+
+* [gulp.js](http://gulpjs.com/), команда `npm gulp` - автоматизированная сборка;
+* [Bower](http://bower.io/), команда `npm bower` - менеджер пакетов стороронних поставщиков;
+* [LESS](http://lesscss.org/), команда `npm less` - CSS препроцессор.
 
 Скрипты темы подключаются из `assets/scripts`.
 Основной стиль темы 'assets/styles/theme.less'.
