@@ -110,7 +110,6 @@ gulp.task('vendor-scripts', ['bower'], wrapPipe(function (err) {
 		pushLib(path.join(directory, pack), JSON.parse(fs.readFileSync(path.join(directory, pack, 'bower.json'), 'utf8')).main);
 	});
 	libs.push('assets/scripts/**/*.js');
-	console.log(libs);
 	return gulp.src(libs)
 		.pipe(concat('vendor.script.min.js').on('error', err))
 		.pipe(uglify().on('error', err))
