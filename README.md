@@ -20,7 +20,7 @@
 
 * [gulp.js](http://gulpjs.com/), команда `npm run gulp` - автоматизированная сборка;
 * [LESS](http://lesscss.org/), команда `npm run less` - CSS препроцессор;
-* [CoffeeScript](http://coffeescript.org/), команда 'npm run coffee' - JS препроцессор.
+* [CoffeeScript](http://coffeescript.org/), команда `npm run coffee` - JS препроцессор.
 
 Тема включает часть исходного кода Bootstrap для разработки стилей.
 
