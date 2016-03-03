@@ -1,5 +1,16 @@
 'use strict';
 
+// Настройки
+
+var conf = {
+	template: {
+		ini: '/config.ini',
+		php: '/functions.php',
+		twig: '/template.twig'
+	},
+	templates: ['content', 'layouts', 'pages', 'partials']
+};
+
 // Дополнительный функционал
 
 process.on('uncaughtException', console.error.bind(console));
@@ -14,7 +25,7 @@ var watch      = require('gulp-watch');
 var concat     = require('gulp-concat');
 var add_src    = require('gulp-add-src');
 var less       = require('gulp-less');
-var minify_css = require('gulp-minify-css');
+var minify_css = require('gulp-clean-css');
 var coffee     = require('gulp-coffee');
 var minify_js  = require('gulp-uglify');
 var order      = require('gulp-order');
@@ -70,11 +81,9 @@ gulp.task('styles', function () {
 });
 gulp.task('styles:watch', ['styles'], function () {
 	watch('assets/less/**/*.less', function () {
-		console.log('Обнаружено обновление assets/less/**/*.less');
 		gulp.run('styles');
 	});
 	watch('assets/css/**/*.css', function () {
-		console.log('Обнаружено обновление assets/less/**/*.css');
 		gulp.run('styles');
 	});
 });
@@ -94,39 +103,37 @@ gulp.task('scripts', function () {
 });
 gulp.task('scripts:watch', ['scripts'], function () {
 	watch('assets/coffee/**/*.coffee', function () {
-		console.log('Обнаружено обновление assets/coffee/**/*.coffee');
 		gulp.run('scripts');
 	});
 	watch('assets/js/**/*.js', function () {
-		console.log('Обнаружено обновление assets/js/**/*.js');
 		gulp.run('scripts')
 	});
 });
 
 // HTM
 
-var templatesFolders = ['content', 'layouts', 'pages', 'partials'].map(function (templatesFolder) {
+var templatesFolders = conf.templates.map(function (templatesFolder) {
 	var taskName = 'templates:' + templatesFolder;
 	gulp.task(taskName, function () {
 		return merge(getSubFolders(templatesFolder).map(function (templateFolder) {
 			return task(
 				merge([
 					task(
-						gulp.src(templateFolder + '/config.ini')
+						gulp.src(templateFolder + conf.template.ini)
 					),
 					task(
-						gulp.src(templateFolder + '/functions.php'),
+						gulp.src(templateFolder + conf.template.php),
 						replace('<?php', '')
 					),
 					task(
-						gulp.src(templateFolder + '/template.twig'),
+						gulp.src(templateFolder + conf.template.twig),
 						replace(/^\s*/gm, '')
 					)
 				]),
 				order([
-					'**/config.ini',
-					'**/functions.php',
-					'**/template.twig'
+					templateFolder + conf.template.ini,
+					templateFolder + conf.template.php,
+					templateFolder + conf.template.twig
 				]),
 				concat(templateFolder.fileName + '.htm', {newLine: '\n==\n'}),
 				gulp.dest(templateFolder.filePath)
@@ -134,13 +141,13 @@ var templatesFolders = ['content', 'layouts', 'pages', 'partials'].map(function 
 		}));
 	});
 	gulp.task(taskName + ':watch', [taskName], function () {
-		watch(templatesFolder + '/**/config.ini', function () {
+		watch(templatesFolder + '/**' + conf.template.ini, function () {
 			gulp.run(taskName);
 		});
-		watch(templatesFolder + '/**/functions.php', function () {
+		watch(templatesFolder + '/**' + conf.template.php, function () {
 			gulp.run(taskName);
 		});
-		watch(templatesFolder + '/**/template.twig', function () {
+		watch(templatesFolder + '/**' + conf.template.twig, function () {
 			gulp.run(taskName);
 		});
 	});
