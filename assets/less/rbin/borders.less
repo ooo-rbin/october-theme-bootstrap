@@ -1,0 +1,20 @@
+.make-border-side-class(@side, @class) {
+	.border-@{side}-@{class} {
+		border-@{side}: 1px solid @gray-lighter;
+	}
+}
+
+.make-borders-class(@class) {
+	.border-@{class} {
+		border: 1px solid @gray-lighter;
+	}
+	.make-border-side-class(left, @class);
+	.make-border-side-class(right, @class);
+	.make-border-side-class(top, @class);
+	.make-border-side-class(center, @class);
+}
+
+.make-borders-class(xs);
+@media (min-width: @screen-sm-min) { .make-borders-class(sm); }
+@media (min-width: @screen-md-min) { .make-borders-class(md); }
+@media (min-width: @screen-lg-min) { .make-borders-class(lg); }

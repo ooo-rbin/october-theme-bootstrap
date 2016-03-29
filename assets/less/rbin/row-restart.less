@@ -1,0 +1,14 @@
+//
+// Новая строка таблицы
+// --------------------------------------------------
+
+.make-row-class-restart(@class) {
+	.row-@{class}-restart {
+		clear: left;
+	}
+}
+
+.make-row-class-restart(xs);
+@media (min-width: @screen-sm-min) { .make-row-class-restart(sm); }
+@media (min-width: @screen-md-min) { .make-row-class-restart(md); }
+@media (min-width: @screen-lg-min) { .make-row-class-restart(lg); }

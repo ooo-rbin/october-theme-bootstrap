@@ -1,0 +1,15 @@
+//
+// Атрибуты зависящие от порядка элемента
+// --------------------------------------------------
+
+.make-attribute-value(@base, @count, @index, @postfix) when (@postfix = %)  {
+	@attribute-value: unit((@base / @count * (@index - 1)), @postfix);
+}
+
+.make-attribute-values(@attr, @count, @parent, @selector, @postfix: %, @base: 100, @n: 0, @index: 1) when (@index =< @count) {
+	@{parent}:nth-child(@{n}n+@{index}) @{selector} {
+		.make-attribute-value(@base, @count, @index, @postfix);
+		@{attr}: @attribute-value;
+	}
+	.make-attribute-values(@attr, @count, @parent, @selector, @postfix, @base, @n, (@index + 1));
+}

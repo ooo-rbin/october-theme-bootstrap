@@ -1,0 +1,22 @@
+{% set posts = blogPosts.posts %}
+{% for post in posts %}
+	<item>
+		<title><![CDATA[{{ post.title }}]]></title>
+		<link>{{ post.url }}</link>
+		<pubDate>{{ post.published_at|date('r') }}</pubDate>
+		{% for category in post.categories %}
+			<category><![CDATA[{{ category.name }}]]></category>
+		{% endfor %}
+		<guid isPermaLink="false">{{ post.url }}</guid>
+		<description><![CDATA[
+			{{ post.content_html|raw }}
+			<p>
+				Опубликовано в
+				{{ (post.categories.count > 1) ? 'категориях' : 'категории' }}
+				{% for category in post.categories %}
+					<a href="{{ category.url }}">{{ category.name }}</a>{{ loop.last ? '' : ', ' }}
+				{% endfor %}
+			</p>
+		]]></description>
+	</item>
+{% endfor %}

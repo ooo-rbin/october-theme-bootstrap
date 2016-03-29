@@ -1,0 +1,24 @@
+//
+// Выравнивание текста
+// --------------------------------------------------
+
+.make-text-class-align(@class, @align) {
+	.text-@{class}-@{align} {
+		text-align: @align;
+	}
+}
+
+.make-text-class(@class) {
+	.make-text-class-align(@class, left);
+	.make-text-class-align(@class, right);
+	.make-text-class-align(@class, center);
+	.make-text-class-align(@class, justify);
+	.make-text-class-align(@class, inherit);
+	.make-text-class-align(@class, start);
+	.make-text-class-align(@class, end);
+}
+
+.make-text-class(xs);
+@media (min-width: @screen-sm-min) { .make-text-class(sm); }
+@media (min-width: @screen-md-min) { .make-text-class(md); }
+@media (min-width: @screen-lg-min) { .make-text-class(lg); }

@@ -1,0 +1,35 @@
+//
+// Переключаемые вкладки
+// --------------------------------------------------
+
+.make-current-relay(@count, @relay) {
+	.make-attribute-values(left, @count, ~'> li', ~'> label');
+}
+
+.make-relay(@screen-min, @parent, @links-height, @count, @relay: dafault) {
+	@media (min-width: @screen-min) {
+		#@{parent} > .relay {
+			padding: 0;
+			margin-top: @links-height;
+			position: relative;
+			list-style: none;
+			> li {
+				> * {
+					display: none;
+				}
+				> label {
+					cursor: pointer;
+					position: absolute;
+					bottom: 100%;
+					height: @links-height;
+					width: unit((100 / @count), %);
+				}
+				> label,
+				> input:checked ~ * {
+					display: block;
+				}
+			}
+			.make-current-relay(@count, @relay);
+		}
+	}
+}

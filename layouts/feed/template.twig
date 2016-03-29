@@ -1,0 +1,16 @@
+{% spaceless %}
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" version="2.0">
+	<channel>
+		<title><![CDATA[{% placeholder title default %}{{ this.page.meta_title }}{% endplaceholder %}]]></title>
+		<link>{% placeholder link default %}{{ ''|app }}{% endplaceholder %}</link>
+		<atom:link href="{{ '/feed'|app }}" rel="self" type="application/rss+xml"/>
+		<description><![CDATA[{% placeholder description default %}{{ this.page.meta_description }}{% endplaceholder %}]]></description>
+		<lastBuildDate>{{ 'now'|date('r') }}</lastBuildDate>
+		<language>ru_RU</language>
+		<sy:updatePeriod>daily</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+		{% page %}
+	</channel>
+</rss>
+{% endspaceless %}

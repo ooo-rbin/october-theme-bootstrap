@@ -1,5 +1,8 @@
-�name: RBIn Bootstrap
+name: RBIn Bootstrap
 description: 'Bootstrap тема.'
 author: RBIn
 homepage: 'http://rbin.ru'
-code: ''
+code: 'rbin-bootstrap'
+require:
+    - rainlab.blog
+    - rainlab.pages

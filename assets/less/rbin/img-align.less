@@ -1,0 +1,62 @@
+//
+// Выравнивание картинок
+// --------------------------------------------------
+
+a.media-left,
+img.media-left {
+	float: left;
+	margin-right: 10px;
+}
+a.media-right
+img.media-right {
+	float: right;
+	margin-left: 10px;
+}
+
+.make-img-media-class(@width, @class) {
+	a.media-@{class}-left,
+	a.media-@{class}-right,
+	img.media-@{class}-left,
+	img.media-@{class}-right {
+		margin: auto;
+		display: block;
+		margin-bottom: 10px;
+	}
+	@media (min-width: @width) {
+		a.media-@{class}-center,
+		img.media-@{class}-center {
+			float: none;
+			margin: auto;
+			display: block;
+			margin-bottom: 10px;
+		}
+		a.media-@{class}-left,
+		img.media-@{class}-left {
+			float: left;
+			margin-right: 10px !important;
+		}
+		a.media-@{class}-right,
+		img.media-@{class}-right {
+			float: right;
+			margin-left: 10px !important;
+		}
+	}
+}
+
+.make-img-media-class(@screen-sm-min, sm);
+.make-img-media-class(@screen-md-min, md);
+.make-img-media-class(@screen-lg-min, lg);
+
+a.media-center,
+a.media-left,
+a.media-right,
+img.media-center,
+img.media-left,
+img.media-right {
+	margin: auto;
+	display: block;
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+

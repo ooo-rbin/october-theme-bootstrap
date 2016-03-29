@@ -3,6 +3,7 @@
 // Настройки
 
 var conf = {
+	debug: true,
 	template: {
 		ini: '/config.ini',
 		php: '/functions.php',
@@ -30,9 +31,12 @@ var coffee     = require('gulp-coffee');
 var minify_js  = require('gulp-uglify');
 var order      = require('gulp-order');
 var replace    = require('gulp-replace');
+var sourcemaps = require('gulp-sourcemaps');
 
 function task() {
-	var combined = combiner.obj(Array.prototype.slice.call(arguments));
+	var combined = combiner.obj(Array.prototype.slice.call(arguments).filter(function (task) {
+		return task;
+	}));
 	combined.on('error', console.error.bind(console));
 	return combined;
 }
@@ -70,12 +74,19 @@ gulp.task('default:watch', ['default', 'styles:watch', 'scripts:watch', 'templat
 
 gulp.task('styles', function () {
 	return task(
-		gulp.src('assets/less/**/*.less'),
-		concat('style.less'),
+		gulp.src([
+			'assets/less/theme.less',
+			'assets/less/layouts/**/*.less',
+			'assets/less/pages/**/*.less',
+			'assets/less/partials/**/*.less'
+		]),
+		(conf.debug) ? sourcemaps.init() : false,
 		less(),
+		concat('style.less'),
 		add_src('assets/css/**/*.css'),
 		concat('style.min.css'),
-		minify_css(),
+		(conf.debug) ? false : minify_css(),
+		(conf.debug) ? sourcemaps.write('./') : false,
 		gulp.dest('assets')
 	);
 });
@@ -93,11 +104,13 @@ gulp.task('styles:watch', ['styles'], function () {
 gulp.task('scripts', function () {
 	return task(
 		gulp.src('assets/coffee/**/*.coffee'),
+		(conf.debug) ? sourcemaps.init() : false,
 		concat('script.coffee'),
 		coffee(),
 		add_src('assets/js/**/*.js'),
 		concat('script.min.js'),
-		minify_js(),
+		(conf.debug) ? false : minify_js(),
+		(conf.debug) ? sourcemaps.write('./') : false,
 		gulp.dest('assets')
 	);
 });
