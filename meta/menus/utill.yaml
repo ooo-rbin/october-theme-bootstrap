@@ -1,0 +1,37 @@
+name: 'Утилитарное меню'
+items:
+    -
+        title: 'Задать вопрос'
+        type: url
+        url: '#ask'
+        code: link-modal.htm
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Корзина
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: store-cart
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Войти в личный кабинет'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: cabinet
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

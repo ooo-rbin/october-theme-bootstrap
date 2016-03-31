@@ -1,0 +1,46 @@
+//
+// Реквезиты в шапке
+// --------------------------------------------------
+
+@import '../../boot.less';
+
+#header-info {
+	a {
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	padding-top: 1em;
+	padding-bottom: 1em;
+	@media (min-width: @screen-sm-min) {
+		padding-top: 40px;
+	}
+	address {
+		font-size: 14px;
+		line-height: 1em;
+		margin: 0;
+		@media (min-width: @screen-sm-min) {
+			padding-top: 1.5em;
+		}
+		@media (min-width: @screen-md-min) {
+			font-size: 18px;
+			padding-top: 2em;
+		}
+		@media (min-width: @screen-lg-min) {
+			font-size: 21px;
+		}
+		a {
+			color: inherit;
+		}
+		p {
+			margin-left: 1em;
+		}
+		.bigger {
+			font-size: 1.5em;
+		}
+		.fa {
+			margin-right: 0.25em;
+		}
+	}
+}

@@ -1,0 +1,88 @@
+//
+// Слайдер в заголовке страницы
+// --------------------------------------------------
+
+@import '../../boot.less';
+
+#main-slider {
+	position: relative;
+	background-image: url(images/noisy.jpg);
+	top: -45px;
+	margin-bottom: -20px;
+	z-index: 1;
+	.slick-initialized {
+		margin: 0;
+		.slick-slide {
+			height: 411px;
+			background: no-repeat center center;
+			background-size: auto 100%;
+			.container {
+				height: 100%;
+				position: relative;
+				p {
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					text-shadow: 1px 1px 2px #fff, 1px -1px 2px #fff, -1px 1px 2px #fff, -1px -1px 2px #fff, 0 0 2em #fff, 0 0 1em #fff, 0 0 0.5em #fff;
+					padding: 0 10% 54px 10%;
+					font-size: 26px;
+					@media (min-width: @screen-xs) {
+						font-size: 30px;
+					}
+					@media (min-width: @screen-sm) {
+						font-size: 30px;
+					}
+					@media (min-width: @screen-md) {
+						font-size: 38px;
+					}
+					@media (min-width: @screen-lg) {
+						font-size: 48px;
+					}
+					strong {
+						font-size: 1.2em;
+						margin: 0.15em 0 0 0;
+						display: inline-block;
+					}
+					small {
+						display: inline-block;
+					}
+					.btn {
+						font-size: 0.5em;
+					}
+				}
+			}
+		}
+	}
+	.container {
+		position: relative;
+	}
+	.slick-dots {
+		position: absolute;
+		bottom: 0;
+		z-index: 2;
+		text-align: left;
+		width: auto;
+		padding: 0 10% 0 10%;
+		margin: 0 -0.5em;
+		font-size: 18px;
+		line-height: 70px;
+		li {
+			font-size: inherit;
+			line-height: 1em;
+			width: 1em;
+			height: 1em;
+			margin: 0 0.5em;
+			vertical-align: middle;
+			background-color: @gray-limit;
+			box-shadow: 0 0 0 0.15em @gray-limit;
+			border-radius: 50%;
+		}
+		li.slick-active {
+			background-color: @brand-danger;
+		}
+		button {
+			display: none;
+		}
+	}
+}
+

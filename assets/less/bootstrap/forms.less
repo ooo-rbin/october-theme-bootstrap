@@ -211,7 +211,7 @@ input[type="search"] {
 // horizontal forms, use the predefined grid classes.
 
 .form-group {
-  margin-bottom: @form-group-margin-bottom;
+  margin-bottom: 0; // @form-group-margin-bottom;
 }
 
 
@@ -401,7 +401,7 @@ input[type="checkbox"] {
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 2; // Ensure icon is above input groups
+  z-index: 3; // Ensure icon is above input groups
   display: block;
   width: @input-height-base;
   height: @input-height-base;
@@ -456,7 +456,7 @@ input[type="checkbox"] {
   display: block; // account for any element using help-block
   margin-top: 5px;
   margin-bottom: 10px;
-  color: lighten(@text-color, 25%); // lighten the text some for contrast
+  color: lighten(@content-color, 25%); // lighten the text some for contrast
 }
 
 
@@ -539,6 +539,27 @@ input[type="checkbox"] {
       top: 0;
     }
   }
+
+	// Form group sizes
+	//
+	// Quick utility class for applying `.input-lg` and `.input-sm` styles to the
+	// inputs and labels within a `.form-group`.
+	.form-group-lg {
+		@media (min-width: @screen-sm-min) {
+			.control-label {
+				padding-top: (@padding-large-vertical + 1);
+				font-size: @font-size-large;
+			}
+		}
+	}
+	.form-group-sm {
+		@media (min-width: @screen-sm-min) {
+			.control-label {
+				padding-top: (@padding-small-vertical + 1);
+				font-size: @font-size-small;
+			}
+		}
+	}
 }
 
 

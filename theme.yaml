@@ -1,8 +1,5 @@
-name: RBIn Bootstrap
-description: 'Bootstrap тема.'
-author: RBIn
+name: termoform.perm.ru
+description: 'Тема для сайта OOO «Термоформ».'
+author: 'ООО «Бизнес Интеллект»'
 homepage: 'http://rbin.ru'
-code: 'rbin-bootstrap'
-require:
-    - rainlab.blog
-    - rainlab.pages
+code: 'termoform'

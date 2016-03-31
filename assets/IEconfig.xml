@@ -10,7 +10,8 @@
 			<TileImage src="images/mstile-144x144.png"/>
 		</tile>
 		<notification>
-			<polling-uri src="/feed.xml"/>
+			<polling-uri src="/cabinet/feed.xml"/>
+			<polling-uri1 src="/feed.xml"/>
 			<frequency>1440</frequency>
 			<cycle>1</cycle>
 		</notification>

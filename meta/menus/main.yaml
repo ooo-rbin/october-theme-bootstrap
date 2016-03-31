@@ -1,0 +1,59 @@
+name: 'Главное меню'
+items:
+    -
+        title: Новости
+        nesting: '0'
+        type: blog-category
+        url: ''
+        code: ''
+        reference: '4'
+        cmsPage: blog-category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Продукция и услуги'
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: products
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Цены
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: price
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Контакты
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: contacts
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'О компании'
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: about
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

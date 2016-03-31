@@ -1,1 +1,44 @@
-{% component 'blogPost' %}
+{% set post = blogPost.post %}
+{% put title %}{{ post.title }}{% endput %}
+{% put meta_title %}<meta name="title" content="{{ post.title }}">{% endput %}
+{% put meta_description %}<meta name="description" content="{{ post.summary }}">{% endput %}
+<nav>
+	<ol class="breadcrumb">
+		<li><a href="{{ '/'|app }}">Главная</a></li>
+		<li>
+			{% for category in post.categories %}
+				<a href="{{ category.url }}">{{ category.name }}</a>{{ loop.last ? '' : ', ' }}
+			{% else %}
+				Блог компании
+			{% endfor %}
+		</li>
+		<li class="active">{{ post.title }}</li>
+	</ol>
+</nav>
+<h1>
+	{{ post.title }}
+	{% if post.categories.count %}
+		<small>
+			опубликовано в
+			{{ (post.categories.count > 1) ? 'категориях' : 'категории' }}
+			{% for category in post.categories %}
+				<a href="{{ category.url }}">{{ category.name }}</a>{{ loop.last ? '' : ', ' }}
+			{% endfor %}
+		</small>
+	{% endif %}
+</h1>
+{% if post.featured_images.count == 1 %}
+	{% set image = post.featured_images[0] %}
+	<a href="{{ image.path }}" data-toggle="lightbox" class="thumbnail media-sm-left" title="{{ image.title }}"><img src="{{ image.thumb(290, auto) }}" alt="{{ image.description }}" width="290"></a>
+{% elseif post.featured_images.count %}
+	<div class="featured-images text-center">
+		{% for image in post.featured_images %}
+				<img
+					data-src="{{ image.filename }}"
+					src="{{ image.path }}"
+					alt="{{ image.description }}"
+					style="max-width: 100%" />
+		{% endfor %}
+	</div>
+{% endif %}
+{{ post.content_html|raw }}

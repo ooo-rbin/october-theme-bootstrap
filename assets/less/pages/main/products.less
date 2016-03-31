@@ -1,0 +1,44 @@
+//
+// Продукты компании
+// --------------------------------------------------
+
+@import '../../boot.less';
+
+.make-attribute-value(@base, @count, @index, @postfix) when (@postfix = products_background_image_url) {
+	@url: %("images/b%a.png", @index);
+	@attribute-value: url(@url);
+}
+
+#main-products {
+	> .nav {
+		.make-attribute-values(background-image, 6, ~'> li', ~'> a', products_background_image_url);
+		> li {
+			@media (min-width: @screen-sm-min) {
+				float: left;
+				width: 33.33333333%;
+				position: relative;
+				min-height: 1px;
+				padding-left: 15px;
+				padding-right: 15px;
+				&:nth-child(3n+1) {
+					clear: left;
+				}
+			}
+			> a {
+				min-height: 60px;
+				background-size: auto 50px;
+				background-position: 15px center;
+				padding: @nav-link-padding;
+				padding-left: 120px;
+				@media (min-width: @screen-sm-min) {
+					background-size: auto 100px;
+					background-position: center 10px;
+					padding: @nav-link-padding;
+					padding-top: 120px;
+				}
+				background-repeat: no-repeat;
+				margin: 1em 0;
+			}
+		}
+	}
+}

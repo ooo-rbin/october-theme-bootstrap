@@ -4,34 +4,34 @@
 // and disabled options for all buttons
 
 .button-variant(@color; @background; @border) {
-  color: @color;
-  background-color: @background;
-  border-color: @border;
+  color: @color !important;
+  background-color: @background !important;
+  border-color: @border !important;
 
   &:focus,
   &.focus {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 25%);
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        //border-color: darken(@border, 25%) !important;
   }
   &:hover {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 12%);
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        //border-color: darken(@border, 12%) !important;
   }
   &:active,
   &.active,
   .open > .dropdown-toggle& {
-    color: @color;
-    background-color: darken(@background, 10%);
-        border-color: darken(@border, 12%);
+    color: @color !important;
+    background-color: darken(@background, 10%) !important;
+        //border-color: darken(@border, 12%) !important;
 
     &:hover,
     &:focus,
     &.focus {
-      color: @color;
-      background-color: darken(@background, 17%);
-          border-color: darken(@border, 25%);
+      color: @color !important;
+      background-color: darken(@background, 17%) !important;
+          //border-color: darken(@border, 25%) !important;
     }
   }
   &:active,

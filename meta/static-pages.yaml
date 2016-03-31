@@ -1,8 +1,15 @@
 static-pages:
-    main: {  }
-    projects:
-        projects-websites: {  }
-        projects-applications: {  }
-    about: {  }
-    contact-us: {  }
-    terms: {  }
+    products:
+        products-tubes: {  }
+        products-kits: {  }
+        products-irradiation: {  }
+        products-tapes: {  }
+        products-adhesion-tubes: {  }
+    price: {  }
+    contacts: {  }
+    about:
+        delivery: {  }
+    certifications: {  }
+    guarantees: {  }
+    dealers: {  }
+    sitemap: {  }

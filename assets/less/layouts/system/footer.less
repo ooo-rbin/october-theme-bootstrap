@@ -1,0 +1,41 @@
+//
+// Подвал сайта
+// --------------------------------------------------
+
+@import '../../boot.less';
+
+#footer {
+	padding-top: 1em;
+	a {
+		color: @body-link-color;
+		text-decoration: @body-link-decoration;
+		&:hover,
+		&:focus {
+			color: @body-link-hover-color;
+			text-decoration: @body-link-hover-decoration;
+		}
+	}
+	.socicon-button {
+		line-height: 1.1;
+		text-align: center;
+		background-color: @body-link-color;
+		color: @body-bg;
+		border-radius: 50%;
+		padding: 9px;
+		width: 36px;
+		height: 36px;
+		margin-right: 0.5em;
+		&:hover,
+		&:focus {
+			background-color: @body-link-hover-color;
+			color: @body-bg;
+		}
+	}
+	.navbar-nav {
+		padding: 10px 16px;
+		@media (min-width: @screen-sm-min) {
+			padding: 10px 0;
+		}
+	}
+
+}

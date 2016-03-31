@@ -1,0 +1,48 @@
+{% set results = searchResults.results %}
+{% set query = searchResults.query %}
+{% set noResultsMessage = searchResults.noResultsMessage %}
+{% set showProviderBadge = searchResults.showProviderBadge %}
+{% set visitPageMessage = searchResults.visitPageMessage %}
+<form class="form-inline" action="{{ '/search'|app }}" accept-charset="utf-8" method="get">
+	<div class="form-group form-group-lg">
+		{% if query %}
+			<label class="control-label" for="search">Поиск для:&nbsp;</label>
+		{% else %}
+			<label class="control-label" for="search">Поиск:&nbsp;</label>
+		{% endif %}
+		<div class="input-group">
+			<div class="form-group has-normal has-feedback">
+				<input name="q" type="text" class="form-control" id="search" value="{{ query }}">
+				<i class="fa fa-search form-control-feedback hidden-xs"></i>
+			</div>
+			<div class="input-group-btn visible-xs-block">
+				<button type="submit" class="btn btn-lg btn-danger">Найти</button>
+			</div>
+		</div>
+		{% if results.count == 0 and query %}
+			<span class="help-block text-danger">{{ noResultsMessage }}</span>
+		{% endif %}
+	</div>
+</form>
+<ol start="{{ ((results.currentPage - 1) * results.perPage) + 1 }}">
+	{% for result in results %}
+		<li>
+			<p class="h4">
+				<a href="{{ result.url }}" title="{{ visitPageMessage }}">
+					{{ result.title | raw }}
+				</a>
+				{% if showProviderBadge %}
+					<span class="badge">
+						{% if result.provider == 'Blog' %}
+							Запись
+						{% else %}
+							Страница
+			            {% endif %}
+			        </span>
+				{% endif %}
+			</p>
+			<p>{{ result.excerpt | raw }}</p>
+		</li>
+	{% endfor %}
+</ol>
+{% partial 'pagination' pages=results totalPages=((results.hasMorePages) ? results.currentPage + 1 : results.currentPage) %}

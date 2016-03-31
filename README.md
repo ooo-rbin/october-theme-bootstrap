@@ -1,4 +1,11 @@
-# October Bootstrap
+# termoform.perm.ru
+
+Тема создана для сайта [termofotm.perm.ru](https://termoform.perm.ru).
+Запрещается использование представленного графического материала и стилевого оформления для иных публичных сайтов.
+
+*Важно.* После установки темы, не забудьте выполнить `npm install` для завершения сборки шаблонов.
+
+## October Bootstrap
 
 Данная тема построена на фреймворках [jQuery](https://jquery.com/) и [Bootstrap](http://getbootstrap.com/).
 Она предназначена для [CMS October](https://octobercms.com/) и поддерживает плагины [RainLab.Blog](https://octobercms.com/plugin/rainlab-blog) и [RainLab.Pages](https://octobercms.com/plugin/rainlab-pages).
@@ -25,3 +32,4 @@
 Тема включает часть исходного кода Bootstrap для разработки стилей.
 
 Лицензия [MIT](http://licenseit.ru/wiki/index.php/MIT_License).
+Все права на графические материалы и стилевое оформление остаются за ООО «Термоформ».

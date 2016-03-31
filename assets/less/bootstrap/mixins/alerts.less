@@ -1,14 +1,14 @@
 // Alerts
 
-.alert-variant(@background; @border; @text-color) {
+.alert-variant(@background; @border; @content-color) {
   background-color: @background;
   border-color: @border;
-  color: @text-color;
+  color: @content-color;
 
   hr {
     border-top-color: darken(@border, 5%);
   }
   .alert-link {
-    color: darken(@text-color, 10%);
+    color: darken(@content-color, 10%);
   }
 }

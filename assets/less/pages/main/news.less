@@ -1,0 +1,22 @@
+//
+// Новости компании
+// --------------------------------------------------
+
+@import '../../boot.less';
+
+#main-news {
+	.nav > li > img {
+		max-width: 100%;
+		margin: 0;
+	}
+	.nav > li > a {
+		&:before {
+			content: '';
+			display: table;
+			width: 100%;
+			clear: both;
+		}
+		padding-left: 0;
+		padding-right: 0;
+	}
+}

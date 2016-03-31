@@ -1,0 +1,56 @@
+name: 'Продукция и услуги'
+items:
+    -
+        title: 'Термоусаживающиеся трубки'
+        type: url
+        url: '#shrink-tube'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: link-shrink-tube
+            isExternal: '0'
+    -
+        title: 'Комплекты термоусаживающихся изделий'
+        type: url
+        url: '#shrink-kit'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: link-shrink-kit
+            isExternal: '0'
+    -
+        title: 'Лента адгезивного подслоя'
+        type: url
+        url: '#adhesion-tape'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: link-adhesion-tape
+            isExternal: '0'
+    -
+        title: 'Трубка адгезивного подслоя'
+        type: url
+        url: '#adhesion-tube'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: link-adhesion-tube
+            isExternal: '0'
+    -
+        title: 'Облучение термоусаживаемых материалов'
+        type: url
+        url: '#shrink-irradiation'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: link-shrink-irradiation
+            isExternal: '0'
+    -
+        title: 'Стерилизация медецинского инструмента, инвентаря и материалов'
+        type: url
+        url: '#sterilization'
+        code: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: link-sterilization
+            isExternal: '0'

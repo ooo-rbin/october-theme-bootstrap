@@ -7,6 +7,8 @@
 // --------------------------------------------------
 
 .btn {
+	text-decoration: none !important;
+	text-shadow: none;
   display: inline-block;
   margin-bottom: 0; // For input.btn
   font-weight: @btn-font-weight;
@@ -92,7 +94,7 @@
 
 // Make a button look and behave like a link
 .btn-link {
-  color: @link-color;
+  color: @content-link-color;
   font-weight: normal;
   border-radius: 0;
 
@@ -112,8 +114,8 @@
   }
   &:hover,
   &:focus {
-    color: @link-hover-color;
-    text-decoration: @link-hover-decoration;
+    color: @content-link-hover-color;
+    text-decoration: @content-link-hover-decoration;
     background-color: transparent;
   }
   &[disabled],

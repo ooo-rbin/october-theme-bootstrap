@@ -1,0 +1,52 @@
+name: Разное
+items:
+    -
+        title: Сертификаты
+        nesting: '0'
+        type: static-page
+        code: ''
+        reference: certifications
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: 'col-sm-3 col-md-12'
+            isExternal: '0'
+    -
+        title: 'Гарантии, обмен, возврат'
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: guarantees
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: 'col-sm-3 col-md-12'
+            isExternal: '0'
+    -
+        title: 'Справочная информация'
+        nesting: '0'
+        type: blog-category
+        url: ''
+        code: ''
+        reference: '5'
+        cmsPage: blog-category
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: 'col-sm-3 col-md-12'
+            isExternal: '0'
+    -
+        title: 'Наши дилеры'
+        nesting: '0'
+        type: static-page
+        url: ''
+        code: ''
+        reference: dealers
+        cmsPage: ''
+        replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: 'col-sm-3 col-md-12'
+            isExternal: '0'

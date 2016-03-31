@@ -1,1 +1,43 @@
-{% component 'blogPosts' %}
+{% set category = blogPosts.category %}
+{% put title %}{{ category.name }}{% endput %}
+{% if category.name %}{% put meta_title %}<meta name="title" content="{{ category.name }}">{% endput %}{% endif %}
+{% if category.description %}{% put meta_description %}<meta name="description" content="{{ category.description }}">{% endput %}{% endif %}
+<nav>
+	<ol class="breadcrumb">
+		<li><a href="{{ '/'|app }}">Главная</a></li>
+		<li class="active">{{ category.name }}</li>
+	</ol>
+</nav>
+<h1>{{ category.name }}</h1>
+{% if category.description %}
+{{ category.description|raw }}
+{% endif %}
+{% set posts = blogPosts.posts %}
+{% for post in posts %}
+	<hr>
+	<article class="post clearfix row">
+		<h2 class="h5 text-muted col-xs-12">{{ post.title }}</h2>
+		{% if post.featured_images.count %}
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 text-center">
+				{% set image = post.featured_images[0] %}
+				<img src="{{ image.thumb(290, auto) }}" alt="{{ image.description }}" style="max-width: 100%;">
+			</div>
+		{% endif %}
+		<div class="col-xs-12{{ post.featured_images.count ? ' col-sm-8 col-md-9 col-lg-10' : '' }}">
+			{% if post.excerpt %}
+				<p>{{ post.summary }} <a href="{{ post.url }}" title="{{ post.title }}" class="more btn btn-dafault pull-right">Подробнее</a></p>
+			{% else %}
+				{{ post.content_html|raw }}
+			{% endif %}
+		</div>
+	</article>
+{% else %}
+	<div class="jumbotron">
+		<div class="container">
+			<p class="h1">{{ noPostsMessage }}</p>
+			<p>Попробуйте воспользоваться меню сайта для поиска нужной вам информации.</p>
+		</div>
+	</div>
+	<p></p>
+{% endfor %}
+{% partial 'pagination' pages=posts totalPages=pages.lastPage newer='Новое' older='Предыдущее' %}

@@ -1,0 +1,48 @@
+//
+// Фиксированный фрагмент utill для главного меню
+// --------------------------------------------------
+
+@import '../../boot.less';
+@import '../../bootstrap/buttons.less';
+
+#menu-util {
+	position: static;
+	@media (min-width: @screen-sm-min) {
+		position: fixed;
+	}
+	.container {
+		padding: 0;
+		@media (min-width: @screen-sm-min) {
+			.container-fixed();
+		}
+	}
+	.navbar-nav {
+		margin-bottom: 0;
+	}
+	.pull-right {
+		float: none !important;
+		@media (min-width: @screen-sm-min) {
+			float: right !important;
+			> li > a {
+				#gradient.vertical(@gray-lighter, darken(@gray-lighter, 10%));
+				.btn-default();
+				text-decoration: none;
+				border: solid 1px darken(@gray-lighter, 20%) !important;
+				border-top: none !important;
+				&:hover,
+				&:focus {
+					background-image: none;
+				}
+				border-radius: 0 0 4px 4px;
+				padding: 4px 8px;
+				margin-left: 4px;
+			}
+			> li.active > a {
+				.btn-default.active();
+				background-image: none;
+			}
+		}
+	}
+}
+
+

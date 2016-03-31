@@ -1,0 +1,5 @@
+{% set parent = page.parent %}
+{% if parent %}
+	{% partial 'static-page-breadcrumb' page=parent %}
+{% endif %}
+<li><a href="{{ page.url|app }}">{{ page.title }}</a></li>

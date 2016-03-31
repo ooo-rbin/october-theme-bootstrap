@@ -28,7 +28,7 @@ body {
   font-family: @font-family-base;
   font-size: @font-size-base;
   line-height: @line-height-base;
-  color: @text-color;
+  color: @body-color;
   background-color: @body-bg;
 }
 
@@ -46,13 +46,13 @@ textarea {
 // Links
 
 a {
-  color: @link-color;
-  text-decoration: none;
+  color: @content-link-color;
+  text-decoration: @content-link-decoration;
 
   &:hover,
   &:focus {
-    color: @link-hover-color;
-    text-decoration: @link-hover-decoration;
+    color: @content-link-hover-color;
+    text-decoration: @content-link-hover-decoration;
   }
 
   &:focus {

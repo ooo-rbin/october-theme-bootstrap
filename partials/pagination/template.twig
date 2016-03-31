@@ -1,0 +1,15 @@
+{% if totalPages > 1 %}
+	<ul class="pagination">
+		{% if pages.currentPage > 1 %}
+			<li><a href="{{ pages.url(pages.currentPage-1) }}">&larr; {{ newer }}</a></li>
+		{% endif %}
+		{% for page in 1..totalPages %}
+			<li class="{{ pages.currentPage == page ? 'active' : null }}">
+				<a href="{{ pages.url(page) }}">{{ page }}</a>
+			</li>
+		{% endfor %}
+		{% if totalPages  > pages.currentPage %}
+			<li><a href="{{ pages.url(pages.currentPage+1) }}">{{ older }} &rarr;</a></li>
+		{% endif %}
+	</ul>
+{% endif %}

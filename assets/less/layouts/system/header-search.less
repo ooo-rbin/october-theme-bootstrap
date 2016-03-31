@@ -1,0 +1,36 @@
+//
+// Форма поиска в шапке
+// --------------------------------------------------
+
+
+@import '../../boot.less';
+@import '../../bootstrap/buttons.less';
+
+#header-search {
+	margin-left: 1em;
+	@media (min-width: @screen-sm-min) {
+		width: 0 !important;
+		.btn-danger();
+		padding: 6px 1em;
+		&:focus,
+		&:hover {
+
+			padding-right: 3em;
+			width: 15em !important;
+		}
+		~ .fa {
+			color: @gray-limit;
+		}
+	}
+	@media (min-width: @screen-md-min) {
+		&:focus,
+		&:hover {
+			width: 15em !important;
+			padding-right: 42.5px;
+			padding-left: 12px;
+		}
+	}
+}
+
+
+

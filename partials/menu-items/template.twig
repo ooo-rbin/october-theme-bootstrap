@@ -1,12 +1,18 @@
-<ul class="{{ class }}">
+<ul {% if id %} id="{{ id }}" {% endif %} class="{{ class }}">
 	{% for item in items %}
-		<li class="{{ item.isActive or item.isChildActive ? 'active' : '' }} {{ item.items ? 'dropdown' : '' }}">
-			<a {% if item.items %}class="dropdown-toggle" data-hover="dropdown" data-delay="1000" data-close-others="false"{% endif %} href="{{ item.url }}">
-				{{ item.title }}
-				{% if item.items %}<span class="caret"></span>{% endif %}
-			</a>
-			{% if item.items %}
-				{% partial 'menu-items' items=item.items class='dropdown-menu' %}
+		<li class="{{ item.viewBag.cssClass }} {{ item.isActive or item.isChildActive ? 'active' : '' }} {{ item.items ? 'dropdown' : '' }}">
+			{% if item.code|default('') matches '{.htm$}' %}
+				{% content item.code title=item.title url=item.url isActive=item.isActive isHidden=item.viewBag.isHidden cssClass=item.viewBag.cssClass isExternal=item.viewBag.isExternal %}
+			{% else %}
+				<a {% if item.items %} class="dropdown-toggle" data-hover="dropdown" data-delay="1000" data-close-others="false" {% endif %} href="{{ baseUrl }}{{ item.url }}">
+					{{ item.title }}
+					{% if item.items %}
+						<span class="caret"></span>
+					{% endif %}
+				</a>
+				{% if item.items %}
+					{% partial 'menu-items' items=item.items class='dropdown-menu' %}
+				{% endif %}
 			{% endif %}
 		</li>
 	{% endfor %}

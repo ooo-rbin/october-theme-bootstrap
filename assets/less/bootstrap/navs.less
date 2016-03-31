@@ -17,12 +17,13 @@
     display: block;
 
     > a {
+	    text-decoration: none;
       position: relative;
       display: block;
       padding: @nav-link-padding;
       &:hover,
       &:focus {
-        text-decoration: none;
+	      text-decoration: underline;
         background-color: @nav-link-hover-bg;
       }
     }
@@ -34,7 +35,7 @@
       &:hover,
       &:focus {
         color: @nav-disabled-link-hover-color;
-        text-decoration: none;
+        text-decoration: underline;
         background-color: transparent;
         cursor: @cursor-disabled;
       }
@@ -47,7 +48,7 @@
     &:hover,
     &:focus {
       background-color: @nav-link-hover-bg;
-      border-color: @link-color;
+      border-color: @content-link-color;
     }
   }
 
@@ -141,13 +142,24 @@
 
 // Stacked pills
 .nav-stacked {
+	background-color: @brand-danger;
   > li {
     float: none;
     + li {
       margin-top: 2px;
       margin-left: 0; // no need for this gap between nav items
     }
+	 > a {
+		  color: @gray-limit;
+	  }
   }
+	> li.active > a,
+	> li > a:hover,
+	> li > a:focus {
+		background-color: darken(@brand-danger, 10%) !important;
+		text-decoration: none;
+		color: @gray-lighter !important;
+	}
 }
 
 
