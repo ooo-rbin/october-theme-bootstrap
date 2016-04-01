@@ -3,7 +3,7 @@
 // Настройки
 
 var conf = {
-	debug: false,
+	debug: true,
 	template: {
 		ini: '/config.ini',
 		php: '/functions.php',
