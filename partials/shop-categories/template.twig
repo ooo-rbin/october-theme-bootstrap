@@ -1,0 +1,18 @@
+<ul {% if id %} id="{{ id }}" {% endif %} class="{{ class }}">
+	{% for category in categories %}
+		{% if category.show == 1 %}
+			{% set children = category.children %}
+			<li class="{{ category.slug == slug ? 'active' : '' }} {{ children.empty ? '' : 'dropdown' }}">
+				<a{{ children.empty ? '' : ' class="dropdown-toggle" data-hover="dropdown" data-delay="1000" data-close-others="false"' }} href="{{ url }}/{{ category.slug|escape }}">
+					{{ category.title|escape }}
+					{% if not children.empty %}
+						<span class="caret"></span>
+					{% endif %}
+				</a>
+				{% if not children.empty %}
+					{% partial 'shop-categories' categories=children class='dropdown-menu' url=url slug=slug %}
+				{% endif %}
+			</li>
+		{% endif %}
+	{% endfor %}
+</ul>

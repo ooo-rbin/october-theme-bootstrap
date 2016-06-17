@@ -1,0 +1,237 @@
+name: 'Карта сайта'
+items:
+    -
+        title: Главная
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: main
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+        items:
+            -
+                title: Сертификаты
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: certifications
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Гарантии, обмен, возврат'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: guarantees
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Наши дилеры'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: dealers
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Новости
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '4'
+                cmsPage: blog-category
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Справочная информация'
+                nesting: '0'
+                type: blog-category
+                url: ''
+                code: ''
+                reference: '5'
+                cmsPage: blog-category
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Продукция и услуги'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: products
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+                items:
+                    -
+                        title: 'Термоусаживающиеся трубки'
+                        type: url
+                        url: '/products#shrink-tube'
+                        code: ''
+                        viewBag:
+                            isHidden: '0'
+                            cssClass: ''
+                            isExternal: '0'
+                    -
+                        title: 'Комплекты термоусаживающихся изделий'
+                        type: url
+                        url: '/products#shrink-kit'
+                        code: ''
+                        viewBag:
+                            isHidden: '0'
+                            cssClass: ''
+                            isExternal: '0'
+                    -
+                        title: 'Лента адгезивного подслоя'
+                        type: url
+                        url: '/products#adhesion-tape'
+                        code: ''
+                        viewBag:
+                            isHidden: '0'
+                            cssClass: ''
+                            isExternal: '0'
+                    -
+                        title: 'Трубка адгезивного подслоя'
+                        type: url
+                        url: '/products#adhesion-tube'
+                        code: ''
+                        viewBag:
+                            isHidden: '0'
+                            cssClass: ''
+                            isExternal: '0'
+                    -
+                        title: 'Облучение термоусаживаемых материалов'
+                        type: url
+                        url: '/products#shrink-irradiation'
+                        code: ''
+                        viewBag:
+                            isHidden: '0'
+                            cssClass: ''
+                            isExternal: '0'
+                    -
+                        title: 'Стерилизация медецинского инструмента, инвентаря и материалов'
+                        type: url
+                        url: '/products#sterilization'
+                        code: ''
+                        viewBag:
+                            isHidden: '0'
+                            cssClass: ''
+                            isExternal: '0'
+            -
+                title: Цены
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: price
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Заказ On-line'
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: store
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'О компании'
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: about
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+                items:
+                    -
+                        title: 'Георгафия поставок'
+                        nesting: '0'
+                        type: static-page
+                        url: ''
+                        code: ''
+                        reference: delivery
+                        cmsPage: ''
+                        replace: '0'
+                        viewBag:
+                            isHidden: '0'
+                            cssClass: ''
+                            isExternal: '0'
+            -
+                title: Контакты
+                nesting: '0'
+                type: static-page
+                url: ''
+                code: ''
+                reference: contacts
+                cmsPage: ''
+                replace: '0'
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: 'Личный кабинет'
+                nesting: ''
+                type: cms-page
+                url: ''
+                code: ''
+                reference: cabinet
+                cmsPage: ''
+                replace: ''
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'
+            -
+                title: Корзина
+                type: cms-page
+                code: ''
+                reference: store-cart
+                viewBag:
+                    isHidden: '0'
+                    cssClass: ''
+                    isExternal: '0'

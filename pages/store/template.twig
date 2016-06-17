@@ -1,1 +1,27 @@
-<p>Корзина</p>
+{% set category = storeProducts.category %}
+{% put aside %}
+	<nav id="sub-pages" class="navbar">
+		{% partial 'menu-items' items=storeMenu.menuItems class='nav nav-pills nav-stacked' %}
+	</nav>
+	<nav id="shop-categories" class="navbar">
+		{% partial 'shop-categories' slug=storeProducts.slug categories=storeProducts.roots class='nav nav-pills nav-stacked' url='/store'|app %}
+	</nav>
+{% endput %}
+{% put breadcrumb %}
+	<nav class="col-xs-12">
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			{% if category %}
+				<li><a href="{{ '/store'|app }}">Заказ On-line</a></li>
+				{% for cat in category.parents %}
+					<li><a href="{{ '/store/%s'|format(cat.slug)|app }}">{{ cat.title|escape }}</a></li>
+				{% endfor %}
+				<li class="active">{{ category.title|escape }}</li>
+			{% else %}
+				<li class="active">Заказ On-line</li>
+			{% endif %}
+		</ul>
+	</nav>
+{% endput %}
+<h1>Каталог продукции</h1>
+{% component 'storeProducts' %}

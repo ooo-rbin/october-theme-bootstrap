@@ -1,0 +1,16 @@
+{% put aside %}
+	<nav id="sub-pages" class="navbar">
+		{% partial 'menu-items' items=cabinetMenu.menuItems class='nav nav-pills nav-stacked' %}
+	</nav>
+{% endput %}
+{% put breadcrumb %}
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			<li><a href="{{ '/cabinet'|app }}">Личный кабинет</a></li>
+			<li class="active">Заказы</li>
+		</ul>
+	</nav>
+{% endput %}
+<h1>Заказы</h1>
+{% component 'storeOrders' %}

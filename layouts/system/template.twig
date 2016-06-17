@@ -34,6 +34,7 @@
 	<link href="https://fonts.googleapis.com/css?family=Cuprum:400,700&subset=latin,cyrillic" rel="stylesheet">
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" rel="stylesheet">
 	<link rel="alternate" type="application/rss+xml" title="Новости ООО «Термоформ»" href="/feed">
 	<link rel="alternate" type="application/rss+xml" title="Новое в личном кабинете" href="/cabinet/feed">
 	{% styles %}
@@ -52,7 +53,7 @@
 					</a>
 				</p>
 			</div>
-			<address class="col-xs-12 col-md-5 text-danger">
+			<address class="col-xs-12 col-md-5">
 				<p class="pull-right text-right">
 					<i class="fa fa-phone"></i>
 					<span class="sr-only">Телефоны</span>
@@ -90,7 +91,7 @@
 						{% partial 'menu-items' items=utillMenu.menuItems class='nav navbar-nav pull-right' %}
 					</div>
 				</div>
-				{% partial 'menu-items' items=mainMenu.menuItems class='nav navbar-nav' %}
+				{% partial 'menu-items' items=mainMenu.menuItems class='nav navbar-nav' ignore=((page_id is empty)?'main-link':page_id~'-link') %}
 				<form class="navbar-form navbar-right" action="{{ '/search'|app }}" accept-charset="utf-8" method="get" data-autofocus="#header-search">
 					<div class="form-group">
 						<div class="btn-toolbar">
@@ -134,11 +135,13 @@
 							<li class="active">{{ staticPage.title }}</li>
 						</ul>
 					</nav>
+				{% else %}
+					{% placeholder breadcrumb type="html" title="Хлебные крошки" %}
 				{% endif %}
 				<main id="{{ page_id }}" class="col-xs-12 col-md-9">
 					{% page %}
 				</main>
-				<aside class="col-xs-12 col-md-3">
+				<aside id="aside" class="col-xs-12 col-md-3">
 					{% if page %}
 						{% set toppage = (parent) ? parent : page  %}
 						{% set subpages = toppage.children  %}
@@ -167,28 +170,34 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li class="pull-left">
-					<a href="" target="_blank" class="socicon-button">
+					<a href="http://vk.com/heatshrinktubing" target="_blank" class="socicon-button">
+						<i class="fa fa-vk"></i>
+						<span class="sr-only">VK</span>
+					</a>
+				</li>
+				<li class="pull-left">
+					<a href="https://goo.gl/maps/SxRaPAM2wm82" target="_blank" class="socicon-button">
 						<i class="fa fa-google-plus"></i>
 						<span class="sr-only">Google+</span>
 					</a>
 				</li>
 				<li class="pull-left">
-					<a href="" target="_blank" class="socicon-button">
+					<a href="https://twitter.com/termoform" target="_blank" class="socicon-button">
 						<i class="fa fa-twitter"></i>
 						<span class="sr-only">Twitter</span>
 					</a>
 				</li>
 				<li class="pull-left">
-					<a href="" target="_blank" class="socicon-button">
+					<a href="https://www.facebook.com/termoform.biz/" target="_blank" class="socicon-button">
 						<i class="fa fa-facebook"></i>
 						<span class="sr-only">Facebook</span>
 					</a>
 				</li>
 			</ul>
 			<form class="navbar-form navbar-right" action="{{ '/search'|app }}" accept-charset="utf-8" method="get">
-				<div class="form-group search-form">
+				<div class="form-group search-form text-right">
 					<label class="sr-only control-label" for="footer-search">Поиск</label>
-					<div class="input-group">
+					<div class="input-group text-left">
 						<span class="form-group has-normal has-feedback">
 							<input name="q" type="text" class="form-control" id="footer-search">
 							<i class="fa fa-search form-control-feedback hidden-xs"></i>
@@ -196,18 +205,17 @@
 						<span class="input-group-btn visible-xs-inline">
 							<button type="submit" class="btn btn-default collapsed" data-toggle="collapse" data-target="#search">Поиск</button>
 						</span>
-						<a id="to-top" href="#top" class="btn btn-danger">
-							<i class="fa fa-chevron-up"></i>
-							<span class="sr-only">В начало страницы</span>
-						</a>
 					</div>
-
+					<a id="to-top" href="#top" class="btn btn-danger">
+						<i class="fa fa-chevron-up"></i>
+						<span class="sr-only">В начало страницы</span>
+					</a>
 				</div>
 			</form>
 		</nav>
 		<div class="row">
 			<p class="col-xs-12 col-md-6 col-md-push-6 text-md-right"><a href="/sitemap">Карта сайта</a></p>
-			<p class="col-xs-12 col-md-6 col-md-pull-6">
+			<p class="col-xs-12 col-md-6 col-md-pull-6" id="trash">
 				<!-- Best-Stroy.ru counter code start -->
 				<script language=JavaScript>
 					id = 3318;
@@ -276,12 +284,12 @@
 		</div>
 		<div class="row">
 			<p class="col-xs-12 col-md-6">(с) Термоформ, 2016. Все права защищены</p>
-			<p class="col-xs-12 col-md-6 text-md-right">Разработка сайта: Бизнес Интеллект</p>
+			<p class="col-xs-12 col-md-6 text-md-right">Разработка сайта: <a href="http://rbin.ru" title="Разработка и продвижение сайтов">Бизнес Интеллект</a></p>
 		</div>
 	</div>
 	<div class="modal fade" id="ask">
 		<div class="modal-dialog">
-			<form method="post" enctype="multipart/form-data" class="modal-content" data-request="onAsk" data-request-update="'ask-form': '#ask-form'">
+			<form method="post" enctype="multipart/form-data" class="modal-content" data-request="onAsk" data-request-success="$('#ask').modal('hide');">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Задать вопрос</h4>
@@ -301,6 +309,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.min.js"></script>
 {% scripts %}
 {% framework extras %}
 {% placeholder scripts type="html" title="Теги скриптов" %}

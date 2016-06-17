@@ -1,0 +1,15 @@
+//
+// Правая колонка
+// --------------------------------------------------
+
+@import '../../boot.less';
+
+#aside {
+	@media (max-width: @screen-sm-min) {
+		margin-top: 0 !important;
+	}
+	> * {
+		margin-bottom: (@line-height-computed / 2);
+	}
+}
+

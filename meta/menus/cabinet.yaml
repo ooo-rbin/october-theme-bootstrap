@@ -1,0 +1,50 @@
+name: 'Личный кабинет'
+items:
+    -
+        title: Реквизиты
+        type: cms-page
+        code: ''
+        reference: cabinet
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Заказы
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: cabinet-orders
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Аккаунт
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: ''
+        reference: cabinet-login
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Выйти
+        nesting: ''
+        type: url
+        url: /cabinet
+        code: link-ajax-redirect.htm
+        reference: ''
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: onLogout
+            isExternal: '0'

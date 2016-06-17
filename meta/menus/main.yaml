@@ -1,10 +1,22 @@
 name: 'Главное меню'
 items:
     -
+        title: Главная
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: main-link
+        reference: main
+        cmsPage: ''
+        replace: ''
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
         title: Новости
         nesting: '0'
         type: blog-category
-        url: ''
         code: ''
         reference: '4'
         cmsPage: blog-category
@@ -17,8 +29,10 @@ items:
         title: 'Продукция и услуги'
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: products
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'
@@ -28,9 +42,24 @@ items:
         title: Цены
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: price
+        cmsPage: ''
         replace: '0'
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: 'Заказ On-line'
+        nesting: ''
+        type: cms-page
+        url: ''
+        code: store
+        reference: store
+        cmsPage: ''
+        replace: ''
         viewBag:
             isHidden: '0'
             cssClass: ''
@@ -39,8 +68,10 @@ items:
         title: Контакты
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: contacts
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'
@@ -50,8 +81,10 @@ items:
         title: 'О компании'
         nesting: '0'
         type: static-page
+        url: ''
         code: ''
         reference: about
+        cmsPage: ''
         replace: '0'
         viewBag:
             isHidden: '0'

@@ -1,0 +1,20 @@
+name: 'Каталог продукции'
+items:
+    -
+        title: Корзина
+        type: cms-page
+        code: ''
+        reference: store-cart
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'
+    -
+        title: Каталог
+        type: cms-page
+        code: ''
+        reference: store
+        viewBag:
+            isHidden: '0'
+            cssClass: ''
+            isExternal: '0'

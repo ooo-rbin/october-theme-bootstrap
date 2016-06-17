@@ -6,22 +6,22 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
 {% endput %}
 <section id="main-slider">
-	<div data-slick='{"appendDots": "#head-slider>.container", "fade": true, "cssEase": "linear", "speed": 300, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1, "dots": true, "arrows": false, "centerMode": true, "focusOnSelect": true}'>
-		<div style="background-image: url({{ 'assets/images/slide-1.jpg'|theme }});"><div class="container text-danger"><p>
+	<div data-slick='{"appendDots": "#main-slider>.container", "fade": true, "cssEase": "linear", "speed": 300, "infinite": true, "slidesToShow": 1, "slidesToScroll": 1, "dots": true, "arrows": false, "centerMode": true, "focusOnSelect": true}'>
+		<div style="background-image: url({{ 'assets/images/slide-1.jpg'|theme }});"><div class="container"><p>
 			Вы нажимаете на кнопку,<br>
 			мы делаем все остальное.<br>
 			<a href="/price" class="btn btn-danger">Подробнее</a>
 		</p></div></div>
-		<div style="background-image: url({{ 'assets/images/slide-2.jpg'|theme }});"><div class="container text-danger"><p>
+		<div style="background-image: url({{ 'assets/images/slide-2.jpg'|theme }});"><div class="container"><p>
 			<strong class="text-strong text-uppercase">Нас выбирают профессионалы</strong><br>
 			<small>Накопленные знания, многолетний опыт, повышение квалификации работников нашего предприятия позволяют находить простые решения для сложных задач.</small>
 		</p></div></div>
-		<div style="background-image: url({{ 'assets/images/slide-3.jpg'|theme }});"><div class="container text-danger"><p>
+		<div style="background-image: url({{ 'assets/images/slide-3.jpg'|theme }});"><div class="container"><p>
 			<strong class="text-strong text-uppercase">Производство и поставка</strong><br>
 			широкого ассортимента выпускаемой продукции<br>
 			<a href="/products" class="btn btn-danger">Подробнее</a>
 		</p></div></div>
-		<div style="background-image: url({{ 'assets/images/slide-4.jpg'|theme }});"><div class="container text-danger"><p>
+		<div style="background-image: url({{ 'assets/images/slide-4.jpg'|theme }});"><div class="container"><p>
 			Старейший производитель<br>
 			<strong class="text-strong text-uppercase">термоусадочных изделий</strong><br>
 			в России<br>
@@ -63,9 +63,10 @@
 <div class="bg-texture">
 	<article id="main-advantages" class="container">
 		<h1 class="text-sm-center text-uppercase">Почему с нами работать выгодно:</h1>
-		<ol class="relay">
+		<input class="relay-deselect" type="radio" name="plus" id="plus0" style="display: none;" checked>
+		<ol class="relay" data-comment="Выбирите преимущество что бы узнать больше…">
 			<li>
-				<input type="radio" name="plus" id="plus1" style="display: none;" checked>
+				<input type="radio" name="plus" id="plus1" style="display: none;">
 				<label for="plus1"><h2>Индивидуальный подход к каждому клиенту</h2></label>
 				<p>Компания ТЕРМОФОРМ является лидером на российском рынке термоусаживаемых изделий. Участие компании в национальном рынке термоусаживаемых трубок оценивается в 30-40%.</p>
 				<p>Нашими клиентами являются малые и средние, а также крупные машиностроительные предприятия и производители электротехнической продукции.</p>
@@ -125,7 +126,7 @@
 	<div class="row">
 		<section id="main-delivery" class="col-xs-12 col-md-9 border-right-md">
 			<h2 class="text-uppercase">География поставок</h2>
-			<p><img src="{{ 'assets/images/map.gif'|theme }}" alt="Карта" width="100%"></p>
+			<p><img src="{{ 'assets/images/map.gif'|theme }}" alt="Карта" class="media-full thumbnail"></p>
 			<p><a href="/about/delivery"><small>Посмотреть географию поставок</small></a></p>
 		</section>
 		<nav id="main-sundry" class="col-xs-12 col-md-3">

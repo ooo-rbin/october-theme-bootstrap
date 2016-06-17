@@ -1,31 +1,37 @@
 <p class="form-group">
 	<label class="control-label" for="feedback-name">Представитесь пожалуйста:</label>
-	<span class="input-group">
-		<input name="name" id="feedback-name" type="text" class="form-control" placeholder="ФИО" required>
+	<span class="input-group{{ (name is defined and name == false) ? ' has-error' : '' }}">
+		<input name="name" id="feedback-name" type="text" class="form-control" placeholder="ФИО" required{{ (name is defined and name) ? ' value='~name : '' }}>
 		<span class="input-group-addon"><i class="fa fa-user"></i></span>
 	</span>
 </p>
 <p class="form-group">
 	<label class="control-label" for="feedback-company">Какую ккомпанию вы представляете:</label>
-	<span class="input-group">
-		<input name="company" id="feedback-company" type="text" class="form-control" placeholder="Наименование компании" required>
+	<span class="input-group{{ (company is defined and company == false) ? ' has-error' : '' }}">
+		<input name="company" id="feedback-company" type="text" class="form-control" placeholder="Наименование компании" required{{ (company is defined and company) ? ' value='~company : '' }}>
 		<span class="input-group-addon"><i class="fa fa-users"></i></span>
 	</span>
 </p>
-<p class="form-group">
-	<label class="control-label" for="feedback-contact">Как с вами связаться:</label>
-	<span class="input-group">
-		<span class="input-group-addon"><input type="radio" name="first" value="tel" checked></span>
-		<input id="feedback-contact" type="tel" name="tel" class="form-control" placeholder="Телефон" required>
+<p class="form-group{{ (better is defined and better == false) ? ' has-error' : '' }}">
+	<label class="control-label" id="feedback-contact" for="feedback-contact-tel">Как с вами связаться:</label>
+	<span class="input-group{{ (tel is defined and tel is same as(false)) ? ' has-error' : '' }}">
+		<label class="input-group-addon" style="width: 10em; text-align: right;">По телефону <input type="radio" name="better" value="tel"{{ (better is defined and better == 'tel') ? ' checked' : (better is defined) ? '' : ' checked' }}></label>
+		<input id="feedback-contact-tel" type="tel" name="tel" class="form-control" placeholder="Телефон"{{ (tel is defined and tel) ? ' value='~tel : '' }}>
 		<span class="input-group-addon"><i class="fa fa-phone"></i></span>
 	</span>
-	<span class="input-group">
-		<span class="input-group-addon"><input type="radio" name="first" value="email"></span>
-		<input type="email" class="form-control" placeholder="Эл. почта" required>
+	<span class="input-group{{ (email is defined and email is same as(false)) ? ' has-error' : '' }}">
+		<label class="input-group-addon" style="width: 10em; text-align: right;">Через эл. почту <input type="radio" name="better" value="email"{{ (better is defined and better == 'email') ? ' checked' : '' }}></label>
+		<input id="feedback-contact-email" type="email" name="email" class="form-control" placeholder="Эл. почта"{{ (email is defined and email) ? ' value='~email : '' }}>
 		<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
 	</span>
 </p>
-<p class="form-group">
-	<label class="control-label" for="feedback-name">Ваш вопрос:</label>
-	<textarea class="form-control" rows="6" required></textarea>
+<p class="form-group{{ (question is defined and question == false) ? ' has-error' : '' }}">
+	<label class="control-label" for="feedback-question">Ваш вопрос:</label>
+	<textarea id="feedback-question" name="question" class="form-control" rows="6" required>{{ question }}</textarea>
 </p>
+{% if error %}
+	<p class="alert alert-danger">{{ error }}</p>
+{% endif %}
+{% if success %}
+	<p class="alert alert-success">{{ success }}</p>
+{% endif %}

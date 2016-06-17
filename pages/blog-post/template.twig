@@ -2,19 +2,21 @@
 {% put title %}{{ post.title }}{% endput %}
 {% put meta_title %}<meta name="title" content="{{ post.title }}">{% endput %}
 {% put meta_description %}<meta name="description" content="{{ post.summary }}">{% endput %}
-<nav>
-	<ol class="breadcrumb">
-		<li><a href="{{ '/'|app }}">Главная</a></li>
-		<li>
-			{% for category in post.categories %}
-				<a href="{{ category.url }}">{{ category.name }}</a>{{ loop.last ? '' : ', ' }}
-			{% else %}
-				Блог компании
-			{% endfor %}
-		</li>
-		<li class="active">{{ post.title }}</li>
-	</ol>
-</nav>
+{% put breadcrumb %}
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			<li>
+				{% for category in post.categories %}
+					<a href="{{ category.url }}">{{ category.name }}</a>{{ loop.last ? '' : ', ' }}
+				{% else %}
+					Блог компании
+				{% endfor %}
+			</li>
+			<li class="active">{{ post.title }}</li>
+		</ul>
+	</nav>
+{% endput %}
 <h1>
 	{{ post.title }}
 	{% if post.categories.count %}

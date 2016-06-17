@@ -1,0 +1,26 @@
+{% put aside %}
+	<nav id="sub-pages" class="navbar">
+		{% partial 'menu-items' items=cabinetMenu.menuItems class='nav nav-pills nav-stacked' %}
+	</nav>
+{% endput %}
+{% put breadcrumb %}
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			<li><a href="{{ '/cabinet'|app }}">Личный кабинет</a></li>
+			<li><a href="{{ '/cabinet/orders'|app }}">Заказы</a></li>
+			{% if storeOrder.order %}
+				<li class="active">Заказ № {{ storeOrder.order.id }}</li>
+			{% else %}
+				<li class="active">Неверный код заказа</li>
+			{% endif %}
+		</ul>
+	</nav>
+{% endput %}
+{% if storeOrder.order %}
+	<h1>Заказ № {{ storeOrder.order.id }}</h1>
+{% else %}
+	<h1>Неверный код заказа</h1>
+{% endif %}
+{% component 'storeOrder' %}
+

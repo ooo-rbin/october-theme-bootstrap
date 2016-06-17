@@ -1,1 +1,107 @@
-{% component 'account' %}
+{% set user = account.user %}
+{% put breadcrumb %}
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			<li><a href="{{ '/cabinet'|app }}">Личный кабинет</a></li>
+			<li class="active">Аккаунт</li>
+		</ul>
+	</nav>
+{% endput %}
+{% if user %}
+	{% put aside %}
+		<nav id="sub-pages" class="navbar">
+			{% partial 'menu-items' items=cabinetMenu.menuItems class='nav nav-pills nav-stacked' %}
+		</nav>
+	{% endput %}
+	<h1>Настройки аккаунта</h1>
+	{% if not user.is_activated %}
+		<h2>Ваш акаунт ещё не активирован.</h2>
+		<p>
+			Вы должны подтвердить ваш адресс электронной почты, иначе акаунт может быть заблокирован.
+			Пожалуйста, проверьте свою эллектронную почту.
+			Вам было отправленно письмо с инструкциями по активации акаунта.
+			Так же вы можете <a data-request="account::onSendActivationEmail">запросить повторное письмо</a>.
+		</p>
+	{% endif %}
+	{{ form_ajax('account::onUpdate', { model: user }) }}
+		<p class="form-group">
+			<label for="accountName">Как к вам обращаться:</label>
+			<input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
+		</p>
+		<p class="form-group">
+			<label for="accountEmail">E-mail для корреспонденции:</label>
+			<input name="email" type="email" class="form-control" id="accountEmail" value="{{ form_value('email') }}">
+		</p>
+		<p class="form-group">
+			<label for="accountPassword">Новый пароль:</label>
+			<input name="password" type="password" class="form-control" id="accountPassword">
+		</p>
+		<p class="form-group">
+			<label for="accountPasswordConfirm">Подтвердите ваш новый пароль:</label>
+			<input name="password_confirmation" type="password" class="form-control" id="accountPasswordConfirm">
+		</p>
+		<p class="form-group text-right">
+			<a class="btn btn-link text-danger pull-left" onclick="$('#accountDeactivateForm').toggle()">Заблокировать аккаунт</a>
+			<button type="submit" class="btn btn-danger">Сохранить</button>
+		</p>
+	{{ form_close() }}
+	<div id="accountDeactivateForm" style="display: none">
+		<hr>
+		{{ form_ajax('account::onDeactivate') }}
+			<h2>Заблокировать ваш аккаунт?</h2>
+			<p>
+				Ваш аккаунт будет отключен и ваши данные будут удалены с сайта.
+				Вы сможете восстановить ваш аккаунт через повторную регистрацию.
+			</p>
+			<p class="form-group">
+				<label for="accountDeletePassword">Пожалуйста, для продолжения введите свой пароль:</label>
+				<input name="password" type="password" class="form-control" id="accountDeletePassword">
+			</p>
+			<p class="form-group text-right">
+				<button type="submit" class="btn btn-danger pull-left">Подтвердить блокироваку аккаунта</button>
+				<a class="btn btn-link text-danger" onclick="$('#accountDeactivateForm').toggle()">Отменить</a>
+			</p>
+		{{ form_close() }}
+	</div>
+{% else %}
+	<div class="row">
+		<div class="col-md-6 border-right-md border-md-or">
+			<h2 style="margin-top: 0;">Зарегистрируйтесь</h2>
+			<form data-request="account::onRegister">
+				<p class="form-group">
+					<label for="registerName">Как к вам обращаться:</label>
+					<input name="name" type="text" class="form-control" id="registerName" placeholder="Введите ваше Ф.И.О.">
+				</p>
+				<p class="form-group">
+					<label for="registerEmail">E-mail для корреспонденции:</label>
+					<input name="email" type="email" class="form-control" id="registerEmail" placeholder="Введите ваш e-mail">
+				</p>
+				<p class="form-group">
+					<label for="registerPassword">Жалаемый пароль:</label>
+					<input name="password" type="password" class="form-control" id="registerPassword" placeholder="Введите ваш пароль">
+				</p>
+				<p class="form-group text-right">
+					<button type="submit" class="btn btn-danger">Зарегистрироваться</button>
+				</p>
+			</form>
+		</div>
+		<div class="col-md-6">
+			<h2 style="margin-top: 0;">Войдите</h2>
+			<form data-request="account::onSignin">
+				<p class="form-group">
+					<label for="userSigninLogin">E-mail:</label>
+					<input name="login" type="text" class="form-control" id="userSigninLogin" placeholder="Введите ваш e-mail">
+				</p>
+				<p class="form-group">
+					<label for="userSigninPassword">Пароль:</label>
+					<input name="password" type="password" class="form-control" id="userSigninPassword" placeholder="Введите ваш пароль">
+				</p>
+				<p class="form-group text-right">
+					<a href="{{ '/cabinet/reset'|app }}" class="btn btn-link pull-left text-danger">Забыли пароль?</a>
+					<button type="submit" class="btn btn-danger">Войти</button>
+				</p>
+			</form>
+		</div>
+	</div>
+{% endif %}

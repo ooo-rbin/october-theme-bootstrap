@@ -16,6 +16,7 @@
 			> li {
 				> * {
 					display: none;
+					transition: display 0s step-start 1s;
 				}
 				> label {
 					cursor: pointer;
@@ -23,6 +24,7 @@
 					bottom: 100%;
 					height: @links-height;
 					width: unit((100 / @count), %);
+					margin-bottom: 0;
 				}
 				> label,
 				> input:checked ~ * {
@@ -30,6 +32,22 @@
 				}
 			}
 			.make-current-relay(@count, @relay);
+		}
+		#@{parent} > input.relay-deselect:checked ~ .relay > li:hover > input ~ * {
+			display: block;
+			transition: display 0s step-end 1s;
+		}
+		#@{parent} > input.relay-deselect:checked ~ .relay:after {
+			content: attr(data-comment);
+			display: block;
+			position: absolute;
+			pointer-events: none;
+			bottom: 1em;
+			color: @text-muted;
+			font-size: floor((100% * @font-size-small / @font-size-base));
+		}
+		#@{parent} > input.relay-deselect:checked ~ .relay:hover:after {
+			display: none;
 		}
 	}
 }

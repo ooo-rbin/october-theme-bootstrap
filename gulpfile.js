@@ -7,9 +7,10 @@ var conf = {
 	template: {
 		ini: '/config.ini',
 		php: '/functions.php',
-		twig: '/template.twig'
+		twig: '/template.twig',
+		html: '/content.html'
 	},
-	templates: ['content', 'layouts', 'pages', 'partials']
+	templates: ['content', 'layouts', 'pages', 'partials', 'content/static-pages']
 };
 
 // Дополнительный функционал
@@ -18,20 +19,21 @@ process.on('uncaughtException', console.error.bind(console));
 
 require('es6-promise').polyfill();
 
-var fs         = require('fs');
-var combiner   = require('stream-combiner2');
-var merge      = require('merge-stream');
-var gulp       = require('gulp');
-var watch      = require('gulp-watch');
-var concat     = require('gulp-concat');
-var add_src    = require('gulp-add-src');
-var less       = require('gulp-less');
-var minify_css = require('gulp-clean-css');
-var coffee     = require('gulp-coffee');
-var minify_js  = require('gulp-uglify');
-var order      = require('gulp-order');
-var replace    = require('gulp-replace');
-var sourcemaps = require('gulp-sourcemaps');
+var fs          = require('fs');
+var combiner    = require('stream-combiner2');
+var merge       = require('merge-stream');
+var gulp        = require('gulp');
+var watch       = require('gulp-watch');
+var concat      = require('gulp-concat');
+var add_src     = require('gulp-add-src');
+var less        = require('gulp-less');
+var minify_css  = require('gulp-clean-css');
+var coffee      = require('gulp-coffee');
+var minify_js   = require('gulp-uglify');
+var replace     = require('gulp-replace');
+var sourcemaps  = require('gulp-sourcemaps');
+var minify_html = require('gulp-htmlmin');
+var streamqueue = require('streamqueue');
 
 function task() {
 	var combined = combiner.obj(Array.prototype.slice.call(arguments).filter(function (task) {
@@ -130,24 +132,24 @@ var templatesFolders = conf.templates.map(function (templatesFolder) {
 	gulp.task(taskName, function () {
 		return merge(getSubFolders(templatesFolder).map(function (templateFolder) {
 			return task(
-				merge([
+				streamqueue(
+					{ objectMode: true },
 					task(
-						gulp.src(templateFolder + conf.template.ini)
+						gulp.src(templateFolder.toString() + conf.template.ini)
 					),
 					task(
-						gulp.src(templateFolder + conf.template.php),
+						gulp.src(templateFolder.toString() + conf.template.php),
 						replace('<?php', '')
 					),
 					task(
-						gulp.src(templateFolder + conf.template.twig),
+						gulp.src(templateFolder.toString() + conf.template.twig),
 						replace(/^\s*/gm, '')
+					),
+					task(
+						gulp.src(templateFolder.toString() + conf.template.html),
+						minify_html({collapseWhitespace: true})
 					)
-				]),
-				order([
-					templateFolder + conf.template.ini,
-					templateFolder + conf.template.php,
-					templateFolder + conf.template.twig
-				]),
+				),
 				concat(templateFolder.fileName + '.htm', {newLine: '\n==\n'}),
 				gulp.dest(templateFolder.filePath)
 			);
@@ -161,6 +163,9 @@ var templatesFolders = conf.templates.map(function (templatesFolder) {
 			gulp.run(taskName);
 		});
 		watch(templatesFolder + '/**' + conf.template.twig, function () {
+			gulp.run(taskName);
+		});
+		watch(templatesFolder + '/**' + conf.template.html, function () {
 			gulp.run(taskName);
 		});
 	});

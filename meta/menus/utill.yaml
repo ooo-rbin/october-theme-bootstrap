@@ -2,22 +2,22 @@ name: 'Утилитарное меню'
 items:
     -
         title: 'Задать вопрос'
+        nesting: ''
         type: url
         url: '#ask'
         code: link-modal.htm
+        reference: ''
+        cmsPage: ''
+        replace: ''
         viewBag:
             isHidden: '0'
             cssClass: ''
             isExternal: '0'
     -
         title: Корзина
-        nesting: ''
         type: cms-page
-        url: ''
-        code: ''
+        code: cart-informer
         reference: store-cart
-        cmsPage: ''
-        replace: ''
         viewBag:
             isHidden: '0'
             cssClass: ''
@@ -27,7 +27,7 @@ items:
         nesting: ''
         type: cms-page
         url: ''
-        code: ''
+        code: cabinet
         reference: cabinet
         cmsPage: ''
         replace: ''

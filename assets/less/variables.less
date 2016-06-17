@@ -480,19 +480,19 @@
 //
 //## Define colors for form feedback states and, by default, alerts.
 
-@state-success-text:   @brand-success; // #3c763d;
+@state-success-text:   darken(@brand-success, 20%); // #3c763d;
 @state-success-bg:     #d7efd7; // #dff0d8;
 @state-success-border: darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:      @brand-info; // #31708f;
+@state-info-text:      darken(@brand-info, 20%); // #31708f;
 @state-info-bg:        #d9f0f7; // #d9edf7;
 @state-info-border:    darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:   @brand-warning; // #8a6d3b;
+@state-warning-text:   darken(@brand-warning, 20%); // #8a6d3b;
 @state-warning-bg:     #fcf2e3; // #fcf8e3;
 @state-warning-border: darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:    @brand-danger; // #a94442;
+@state-danger-text:    darken(@brand-danger, 20%); // #a94442;
 @state-danger-bg:      #f2dedf; // #f2dede;
 @state-danger-border:  darken(spin(@state-danger-bg, -10), 5%);
 
@@ -520,7 +520,7 @@
 //** Popover body background color
 @popover-bg: @gray-limit; // #fff;
 //** Popover maximum width
-@popover-max-width: 276px;
+@popover-max-width: 100%; // 276px;
 //** Popover border color
 @popover-border-color: rgba(red(@gray-base), green(@gray-base), blue(@gray-base), .2);
 //** Popover fallback border color
@@ -653,7 +653,7 @@
 @list-group-border-radius: @border-radius-base;
 
 //** Background color of single list items on hover
-@list-group-hover-bg: @gray-light; // #f5f5f5;
+@list-group-hover-bg: @gray-lighter; // #f5f5f5;
 //** Text color of active list items
 @list-group-active-color: @component-active-color;
 //** Background color of active list items
@@ -719,11 +719,11 @@
 //** Padding around the thumbnail image
 @thumbnail-padding: 4px;
 //** Thumbnail background color
-@thumbnail-bg: @body-bg;
+@thumbnail-bg: @gray-limit;
 //** Thumbnail border color
 @thumbnail-border: @gray-lighter; // #ddd;
 //** Thumbnail border radius
-@thumbnail-border-radius: @border-radius-base;
+@thumbnail-border-radius: 4px;
 
 //** Custom text color for thumbnail captions
 @thumbnail-caption-color: @content-color; // @text-color;

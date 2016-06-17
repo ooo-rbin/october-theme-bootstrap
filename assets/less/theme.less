@@ -6,6 +6,65 @@
 
 @import 'fonts/Cuprum.less';
 
+// Блоки
+
+blockquote > blockquote {
+	margin-bottom: 0;
+}
+
+// Какаховеры
+
+.popover-content {
+	margin: 0;
+	>ol, >ul, >dl {
+		padding: 0;
+	}
+	>table, >p {
+		margin: 0;
+	}
+	&.nopad {
+		padding: 0;
+	}
+}
+
+// Кнопка покупки
+
+.btn-buy {
+	margin-bottom: 0.25em;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	.input-group-addon {
+		width: 100% !important;
+		max-width: 12em;
+		background-color: transparent;
+		text-align: left;
+	}
+	.input-group {
+		max-width: 18em;
+	}
+}
+
+// Кнопки
+
+.glyphicon:before {
+	display: inline-block;
+	font: normal normal normal 14px/1 FontAwesome;
+	font-size: inherit;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: @gray-limit;
+}
+
+.glyphicon-chevron-left:before {
+	content: "\f137";
+}
+
+.glyphicon-chevron-right:before {
+	content: "\f138";
+}
+
 // Панельки контента
 
 .bg-white,
@@ -24,6 +83,7 @@
 	color: @gray-light;
 }
 
+.btn .fa,
 a .fa {
 	color: inherit;
 }
@@ -48,6 +108,55 @@ a.anchor {
 		color: @brand-danger;
 		margin-right: 0.5em;
 	}
+}
+
+// Бэйдж Или
+
+.border-md-or {
+	border-bottom: 1px solid @gray-lighter;
+	margin-bottom: 1em;
+}
+
+.border-md-or:after {
+	position: absolute;
+	width: 2.2em;
+	height: 2.2em;
+	background: @content-color;
+	border-radius: 50%;
+	line-height: 2.2em;
+	text-align: center;
+	color: @gray-limit;
+	bottom: -1.1em;
+	right: 50%;
+	margin: 0.5px -1.1em 0 0;
+}
+
+@media (min-width: @screen-md) {
+
+	.border-md-or {
+		border-bottom: none;
+		padding-right: 2em !important;
+		border-right: 1px solid @gray-lighter;
+	}
+
+	.border-md-or + * {
+		padding-left: 2em !important;
+	}
+
+	.border-md-or:after {
+		bottom: 100%;
+		right: -0.5px;
+		margin: 0 -1.1em -2.2em 0;
+	}
+
+}
+
+html[lang=ru_RU] .border-md-or:after {
+	content: 'или';
+}
+
+iframe {
+	margin-bottom: 12.5px;
 }
 
 @import 'bootstrap.less';

@@ -2,21 +2,23 @@
 {% put title %}{{ category.name }}{% endput %}
 {% if category.name %}{% put meta_title %}<meta name="title" content="{{ category.name }}">{% endput %}{% endif %}
 {% if category.description %}{% put meta_description %}<meta name="description" content="{{ category.description }}">{% endput %}{% endif %}
-<nav>
-	<ol class="breadcrumb">
-		<li><a href="{{ '/'|app }}">Главная</a></li>
-		<li class="active">{{ category.name }}</li>
-	</ol>
-</nav>
+{% put breadcrumb %}
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			<li class="active">{{ category.name }}</li>
+		</ul>
+	</nav>
+{% endput %}
 <h1>{{ category.name }}</h1>
 {% if category.description %}
-{{ category.description|raw }}
+	{{ category.description|raw }}
 {% endif %}
 {% set posts = blogPosts.posts %}
 {% for post in posts %}
 	<hr>
 	<article class="post clearfix row">
-		<h2 class="h5 text-muted col-xs-12">{{ post.title }}</h2>
+		<h2 class="h5 text-muted col-xs-12"><a href="{{ post.url }}">{{ post.title }}</a></h2>
 		{% if post.featured_images.count %}
 			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 text-center">
 				{% set image = post.featured_images[0] %}
@@ -40,4 +42,4 @@
 	</div>
 	<p></p>
 {% endfor %}
-{% partial 'pagination' pages=posts totalPages=pages.lastPage newer='Новое' older='Предыдущее' %}
+{% partial 'pagination' pages=posts totalPages=posts.lastPage newer='Новое' older='Предыдущее' %}

@@ -1,1 +1,15 @@
-<p>Личный кабинет</p>
+{% put aside %}
+	<nav id="sub-pages" class="navbar">
+		{% partial 'menu-items' items=cabinetMenu.menuItems class='nav nav-pills nav-stacked' %}
+	</nav>
+{% endput %}
+{% put breadcrumb %}
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			<li class="active">Личный кабинет</li>
+		</ul>
+	</nav>
+{% endput %}
+<h1>Ваши реквизиты</h1>
+{% component 'storeRequisites' %}

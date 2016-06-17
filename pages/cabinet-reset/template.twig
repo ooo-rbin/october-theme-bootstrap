@@ -1,0 +1,42 @@
+{% set code = resetPassword.code %}
+{% put breadcrumb %}
+	<nav>
+		<ul class="breadcrumb">
+			<li><a href="{{ '/'|app }}">Главная</a></li>
+			<li><a href="{{ '/cabinet'|app }}">Личный кабинет</a></li>
+			<li class="active">Восставновление пароля</li>
+		</ul>
+	</nav>
+{% endput %}
+<h1>Восставновление пароля</h1>
+{% if code %}
+	<p id="passwordResetAlert" class="alert alert-success" style="display: none;">
+		Пароль <a href="{{ '/cabinet'|app }}">вашего аккаунт</a> изменен.
+	</p>
+	<form id="passwordResetForm" data-request="resetPassword::onResetPassword" data-request-success="$('#passwordResetAlert').toggle(); $('#passwordResetForm').remove();">
+		<p class="form-group">
+			<label for="resetCode">Код активации:</label>
+			<input name="code" type="text" class="form-control" id="resetCode" placeholder="Введите код активации" value="{{ resetPassword.code }}">
+		</p>
+		<p class="form-group">
+			<label for="resetPassword">Новый пароль:</label>
+			<input name="password" type="password" class="form-control" id="resetPassword" placeholder="Введите ваш новый пароль">
+		</p>
+		<p class="form-group text-right">
+			<button type="submit" class="btn btn-danger">Сбросить пароль</button>
+		</p>
+	</form>
+{% else %}
+	<p id="passwordResetAlert" class="alert alert-success" style="display: none;">
+		На вашу почту высланы инструкции по сбросу пароля. Можете <a href="{{ '/cabinet'|app }}">покинуть</a> эту страницу.
+	</p>
+	<form id="passwordResetForm" data-request="resetPassword::onRestorePassword" data-request-success="$('#passwordResetAlert').toggle(); $('#passwordResetForm').remove();">
+		<p class="form-group">
+			<label for="userRestoreEmail">E-mail:</label>
+			<input name="email" type="email" class="form-control" id="userRestoreEmail" placeholder="Введите ваш e-mail">
+		</p>
+		<p class="form-group text-right">
+			<button type="submit" class="btn btn-danger">Восстановить пароль</button>
+		</p>
+	</form>
+{% endif %}

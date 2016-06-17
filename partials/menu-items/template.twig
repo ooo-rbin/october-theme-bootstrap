@@ -1,19 +1,28 @@
 <ul {% if id %} id="{{ id }}" {% endif %} class="{{ class }}">
 	{% for item in items %}
-		<li class="{{ item.viewBag.cssClass }} {{ item.isActive or item.isChildActive ? 'active' : '' }} {{ item.items ? 'dropdown' : '' }}">
-			{% if item.code|default('') matches '{.htm$}' %}
-				{% content item.code title=item.title url=item.url isActive=item.isActive isHidden=item.viewBag.isHidden cssClass=item.viewBag.cssClass isExternal=item.viewBag.isExternal %}
+		{% if (ignore is empty) or (ignore != item.code) %}
+			{% if item.code|default('') matches '{.htm$}' and not plain %}
+				<li id="{{ item.code|escape }}" class="{{ item.viewBag.cssClass|escape }} {{ item.isActive or item.isChildActive ? 'active' : '' }} {{ item.items ? 'dropdown' : '' }}">
+					{% content item.code title=item.title url=item.url isActive=item.isActive isHidden=item.viewBag.isHidden cssClass=item.viewBag.cssClass isExternal=item.viewBag.isExternal %}
+				</li>
 			{% else %}
-				<a {% if item.items %} class="dropdown-toggle" data-hover="dropdown" data-delay="1000" data-close-others="false" {% endif %} href="{{ baseUrl }}{{ item.url }}">
-					{{ item.title }}
-					{% if item.items %}
-						<span class="caret"></span>
+				<li id="{{ item.code|escape }}" class="{{ item.viewBag.cssClass|escape }} {{ item.isActive or item.isChildActive ? 'active' : '' }} {{ item.items ? 'dropdown' : '' }}">
+					<a {% if item.items and not plain %} class="dropdown-toggle" data-hover="dropdown" data-delay="1000" data-close-others="false" {% endif %} href="{{ baseUrl|escape }}{{ item.url|escape }}">
+						{{ item.title|escape }}
+						{% if item.items and not plain %}
+							<span class="caret"></span>
+						{% endif %}
+					</a>
+					{% if item.code|default('') matches '{.htm$}' %}
+						{% content item.code title=item.title url=item.url isActive=item.isActive isHidden=item.viewBag.isHidden cssClass=item.viewBag.cssClass isExternal=item.viewBag.isExternal %}
 					{% endif %}
-				</a>
-				{% if item.items %}
-					{% partial 'menu-items' items=item.items class='dropdown-menu' %}
-				{% endif %}
+					{% if item.items and not plain %}
+						{% partial 'menu-items' items=item.items class='dropdown-menu' %}
+					{% elseif item.items %}
+						{% partial 'menu-items' items=item.items plain=true %}
+					{% endif %}
+				</li>
 			{% endif %}
-		</li>
+		{% endif %}
 	{% endfor %}
 </ul>
